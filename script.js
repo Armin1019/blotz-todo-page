@@ -9,6 +9,13 @@ function renderTasks() {
   for (const task of tasks) {
     const item = document.createElement("li");
     item.textContent = task.text;
+    if (task.done) {
+      item.classList.add("done");
+    }
+    item.addEventListener("click", function () {
+      task.done = !task.done;
+      renderTasks();
+    });
     taskList.appendChild(item);
   }
 }
@@ -18,7 +25,7 @@ addButton.addEventListener("click", function () {
   if (text === "") {
     return;
   }
-  tasks.push({ text: text });
+  tasks.push({ text: text, done: false });
   taskInput.value = "";
   renderTasks();
 });

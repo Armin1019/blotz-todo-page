@@ -34,3 +34,8 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.done {
+  color: #999;
+  text-decoration: line-through;
+}
