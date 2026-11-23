@@ -1,8 +1,9 @@
 const taskInput = document.getElementById("task-input");
 const addButton = document.getElementById("add-button");
 const taskList = document.getElementById("task-list");
+const clearDoneButton = document.getElementById("clear-done-button");
 
-const tasks = [];
+let tasks = [];
 
 function renderTasks() {
   taskList.innerHTML = "";
@@ -27,5 +28,12 @@ addButton.addEventListener("click", function () {
   }
   tasks.push({ text: text, done: false });
   taskInput.value = "";
+  renderTasks();
+});
+
+clearDoneButton.addEventListener("click", function () {
+  tasks = tasks.filter(function (task) {
+    return !task.done;
+  });
   renderTasks();
 });
